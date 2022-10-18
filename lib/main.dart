@@ -1,5 +1,7 @@
 import 'package:advicer/app_theme.dart';
+import 'package:advicer/application/bloc/advicer_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/screens/home_screen.dart';
 
@@ -17,7 +19,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Advicer',
       theme: AppTheme.darkTheme,
-      home: const HomePage(),
+      home: BlocProvider(
+        create: (context) => AdvicerBloc() ,
+        child: const HomePage()),
     );
   }
 }

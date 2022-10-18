@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-    final adviceBloc = AdvicerBloc();
+    final adviceBloc = BlocProvider.of<AdvicerBloc>(context);
     return Scaffold(
       appBar:  AppBar(title: const Text('Adviser'), centerTitle: true,),
       body: Center(
