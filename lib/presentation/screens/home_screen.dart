@@ -1,4 +1,5 @@
 
+import 'package:advicer/presentation/widgets/advice_item.dart';
 import 'package:advicer/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,12 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 50),
           child: Column(
             children: [
-              Expanded(
+              const Expanded(
                 child: Center(
-                  child: Text("Your Advice is waiting for you!", 
-                  style: Theme.of(context).textTheme.button , ),),
+                  child: AdviceItem(advice: 'This is only an example',), 
+                  /*Text("Your Advice is waiting for you!", 
+                  style: Theme.of(context).textTheme.button , ),*/
+                  ),
               ),
               SizedBox(
                 height: 200,

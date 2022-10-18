@@ -62,8 +62,9 @@ class AppTheme {
     static const TextTheme _darkTextTheme = TextTheme(
     headline1: TextStyle(
       color: _white,
-      fontFamily: "Rubik",
-      fontSize: 22,
+      //fontFamily: "Rubik",
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
       fontStyle: FontStyle.italic),  
     bodyText1:TextStyle(
       color: _white,
