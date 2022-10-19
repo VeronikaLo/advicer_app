@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                         return  CircularProgressIndicator(color: themeData.colorScheme.secondary,);
 
                       }else if(adviceState is AdvicerStateLoaded){
-                        return const AdviceItem(advice: 'This is only an example');
+                        return  AdviceItem(advice: adviceState.advice);
 
                       }else if(adviceState is AdvicerStateError){
                         return const ErrorMessage(message: 'Upps.. Something went wrong!');
