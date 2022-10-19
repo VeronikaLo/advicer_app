@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-    final adviceBloc = BlocProvider.of<AdvicerBloc>(context);
+    final adviceBloc = BlocProvider.of<AdvicerBloc>(context); // context of Bloc
     return Scaffold(
       appBar:  AppBar(title: const Text('Adviser'), centerTitle: true,),
       body: Center(
@@ -44,13 +44,11 @@ class HomePage extends StatelessWidget {
                     })),
                   ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 200,
                 child: Center(
                   child: CustomButton(
-                    onPressed:(){
-                  adviceBloc.add(AdviceGetEvent());
-                } ,)),
+                    )),
               ),
             ],)
         ),
