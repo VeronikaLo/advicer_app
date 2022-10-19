@@ -1,5 +1,7 @@
 
 import 'package:advicer/domain/entities/advicer_entity.dart';
+import 'package:advicer/domain/failures/failure.dart';
+import 'package:dartz/dartz.dart';
 
 class AdvicerUsecases{
 
@@ -7,8 +9,8 @@ class AdvicerUsecases{
       return Future.delayed(const Duration(seconds: 2), ()=> '1');
     }
 
-  Future<AdviceEntity> getAdviceUsecase() async{
+  Future<Either<Failure, AdviceEntity>> getAdviceUsecase() async{
     await sleep();
-    return AdviceEntity(advice: 'advice1', id: 1);
+    return Right(AdviceEntity(advice: 'advice1', id: 1));
   }
 }

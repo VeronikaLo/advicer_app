@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                         return  AdviceItem(advice: adviceState.advice);
 
                       }else if(adviceState is AdvicerStateError){
-                        return const ErrorMessage(message: 'Upps.. Something went wrong!');
+                        return ErrorMessage(message: adviceState.message);
                       }
 
                       return const Placeholder();
