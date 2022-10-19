@@ -12,5 +12,6 @@ class AdvicerUsecases{
   Future<Either<Failure, AdviceEntity>> getAdviceUsecase() async{
     await sleep();
     return Right(AdviceEntity(advice: 'advice1', id: 1));
+           
   }
 }

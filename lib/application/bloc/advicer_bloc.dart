@@ -13,7 +13,7 @@ part 'advicer_state.dart';
 
 
 const GENERAL_FAILURE_MESSAGE = "Ups, something went wrong. Please try again!";
-const SERVER_FAILURE_MESSAGE = "Ups, Server Error. please try again!";
+const SERVER_FAILURE_MESSAGE = "Ups, Server Error. Please try again!";
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
   AdvicerBloc() : super(AdvicerStateInitial()) {
