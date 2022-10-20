@@ -16,9 +16,9 @@ const GENERAL_FAILURE_MESSAGE = "Ups, something went wrong. Please try again!";
 const SERVER_FAILURE_MESSAGE = "Ups, Server Error. Please try again!";
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
-  AdvicerBloc() : super(AdvicerStateInitial()) {
+    final AdvicerUsecases usecases;
 
-    final usecases = AdvicerUsecases();
+  AdvicerBloc({required this.usecases}) : super(AdvicerStateInitial()) {
 
     on<AdviceGetEvent>((event, emit) async{
       // 1. State:

@@ -7,7 +7,8 @@ import 'package:dartz/dartz.dart';
 
 class AdvicerUsecases{
 
- final AdvicerRepository advicerRepository = AdvicerRepositoryImpl();
+  final AdvicerRepository advicerRepository;
+  AdvicerUsecases({required this. advicerRepository});
 
   Future<Either<Failure, AdviceEntity>> getAdviceUsecase() async{
     return advicerRepository.getAdviceFromApi();
