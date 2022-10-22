@@ -18,7 +18,7 @@ class AdvicerRepositoryImpl implements AdvicerRepository{
       return Right(remoteAdvice);
 
     }catch(e){
-      if(e.runtimeType is ServerException){
+      if(e is ServerException){
         return Left(ServerFailure());
 
       } else{
