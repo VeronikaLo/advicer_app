@@ -21,10 +21,11 @@ void main(){
     advicerUsecases = AdvicerUsecases(advicerRepository: mockAdvicerRepository);
   });
 
-  group('getAdviceUsecases', (){
+  group('getAdviceUsecases', (){   //group of tests for testing 1 functionality
 
     final t_Advice = AdviceEntity(advice: 'test', id: 1);
 
+    //1.Test
   test('should return the same advice as repo', ()async{
 
     //arrange
@@ -39,7 +40,7 @@ void main(){
       verifyNoMoreInteractions(mockAdvicerRepository);
   });
 
-  // 2. test:
+  // 2. Test:
 
   test('should return the same ServerFailure', ()async{
 
