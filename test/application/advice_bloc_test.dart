@@ -21,13 +21,19 @@ void main(){
     advicerBloc = AdvicerBloc(usecases: mockAdvicerUsecases);
   });
 
-  test(" initState should be AdvicerInitial", () {
+
+//initial test to conform that user gets AdvicerStateInitial at AppStart
+  test(" initState should be AdvicerStateInitial", () {
     // assert
     expect(advicerBloc.state, equals(AdvicerStateInitial()));
   });
 
-  group("AdviceRequestedEvent", () {
+
+// For each event --> extra group of tests
+  group("AdviceGetEvent", () {
+    
     final t_advice = AdviceEntity(advice: "test", id: 1);
+    // ignore: constant_identifier_names
     const t_advice_string = "test";
 
     test("should call usecase if event is added", () async {
@@ -44,6 +50,8 @@ void main(){
       verifyNoMoreInteractions(mockAdvicerUsecases);
     });
 
+
+ // positive response:
     test("should emmit loading then the loaded state after event is added",
         () async {
       // arrange
@@ -61,6 +69,8 @@ void main(){
       advicerBloc.add(AdviceGetEvent());
     });
 
+
+  // negavie response: server failure
     test(
         "should emmit loading then the error state after event is added -> usecase fails -> server failure",
         () async {
@@ -79,6 +89,8 @@ void main(){
       advicerBloc.add(AdviceGetEvent());
     });
 
+
+  // negavie response: general failure
     test(
         "should emmit loading then the error state after event is added -> usecase fails -> general failure",
         () async {

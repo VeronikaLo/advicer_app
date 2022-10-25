@@ -1,4 +1,6 @@
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:convert';
 
 import 'package:advicer/data/models/advicer_model.dart';
