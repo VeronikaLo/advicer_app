@@ -7,7 +7,8 @@ import 'data/datasources/advicer_remote_datasourse.dart';
 import 'data/repositories/advicer_repository_impl.dart';
 import 'domain/repositories/advicer_repository.dart';
 import 'domain/usecases/advicer_usecases.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 final sl = GetIt.I;  // sl == service Locator
 
@@ -23,10 +24,10 @@ Future<void> init()async{
   sl.registerLazySingleton<AdvicerRepository>(() => AdvicerRepositoryImpl(advicerRemoteDatasource: sl()));
 
   //! datasources
-  sl.registerLazySingleton<AdvicerRemoteDatasource>(() => AdvicerRemoteDatasourceImpl(client: sl()));
+  sl.registerLazySingleton<AdvicerRemoteDatasource>(() => AdvicerRemoteDatasourceImpl(dio: Dio()));
 
   //! extern
-sl.registerLazySingleton(() => http.Client());
+sl.registerLazySingleton(() => Dio());
 
 
 

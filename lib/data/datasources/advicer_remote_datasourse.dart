@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:advicer/domain/entities/advicer_entity.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 import '../exceptions/exceptions.dart';
 import '../models/advicer_model.dart';
 
@@ -14,26 +15,32 @@ abstract class AdvicerRemoteDatasource{
 
 class AdvicerRemoteDatasourceImpl implements AdvicerRemoteDatasource{
 
-  final http.Client client;
-  AdvicerRemoteDatasourceImpl({required this.client});
+  //final http.Client client;
+  final Dio dio;
+  AdvicerRemoteDatasourceImpl({required this.dio});
 
   @override
   Future<AdviceEntity> getRandomAdviceFromApi() async{
-    
-    final response = await client.get(
-      Uri.parse("https://api.adviceslip.com/advice"),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-
-    if (response.statusCode != 200) {
+    try{
+      final response = await dio.get(
+      "https://api.adviceslip.com/advice"
+          );
+      print(response.data['slip']);
+      return AdviceModel.fromJson(response.data["slip"]);    
+    }on DioError catch(e){
+      print(e.message);
       throw ServerException();
-    } else {
-      final responseBody = json.decode(response.body);
-
-      return AdviceModel.fromJson(responseBody["slip"]);
+      
     }
+    
+
+    // if (response.statusCode != 200) {
+    //   throw ServerException();
+    // } else {
+    //   print(response.data);
+    //   return AdviceModel.fromJson(response.data["slip"]);
+    // }
+
   }
 
 }

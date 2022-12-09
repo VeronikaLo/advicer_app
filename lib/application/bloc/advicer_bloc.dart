@@ -28,8 +28,12 @@ class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
       Either<Failure, AdviceEntity> adviceOrFailure = await usecases.getAdviceUsecase();
 
       adviceOrFailure.fold(
-        (failure) => emit(AdvicerStateError(message: _mapFailureToMessage(failure))), 
-        (advice) => emit(AdvicerStateLoaded(advice: advice.advice))
+        (failure) {
+          print(failure);
+          emit(AdvicerStateError(message: _mapFailureToMessage(failure)));}, 
+        (advice) {
+          print(advice);
+          emit(AdvicerStateLoaded(advice: advice.advice));}
         );
         
   
