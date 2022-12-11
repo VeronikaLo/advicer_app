@@ -25,6 +25,7 @@ class AdvicerRemoteDatasourceImpl implements AdvicerRemoteDatasource{
       final response = await dio.get(
       "https://api.adviceslip.com/advice"
           );
+      print(response.data);
       print(response.data['slip']);
       return AdviceModel.fromJson(response.data["slip"]);    
     }on DioError catch(e){
